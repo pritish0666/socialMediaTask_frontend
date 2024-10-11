@@ -11,7 +11,7 @@ const AdminDashboard = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/users/users"
+          "https://socialmediatask-backend.onrender.com/api/users/users"
         );
         setUsers(response.data);
       } catch (error) {

@@ -23,17 +23,26 @@ const UserSubmissionForm = () => {
     });
 
     try {
-      await axios.post("http://localhost:5000/api/users", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "https://socialmediatask-backend.onrender.com/api/users",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       alert("User data submitted successfully!");
-      navigate("/admin"); 
+      console.log(response.data);
+      navigate("/admin");
     } catch (err) {
-      console.error("Submission error:", err);
+      console.error(
+        "Submission error:",
+        err.response ? err.response.data : err.message
+      );
       alert("Submission failed.");
     }
+
   };
 
   return (
